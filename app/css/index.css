@@ -1,0 +1,21 @@
+html, body
+{
+    -webkit-app-region: drag;
+}
+
+body
+{
+  background-color: #00FFFF;
+}
+
+#close, #minimize, #maximize
+{
+  -webkit-app-region: no-drag;
+}
+
+#header
+{
+  background-color: white;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}

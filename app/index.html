@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>chat client</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="./js/index.js" async></script>
+    <!-- <script type="text/javascript" src="./js/socket.js" async></script> -->
+</head>
+<body>
+  <script>
+    var socket = io.connect('http://localhost:3000');
+    //
+    // // Add a connect listener
+    // socket.on('connection',function() {
+    //   console.log('Client has connected to the server!');
+    // });
+    // // Add a connect listener
+    // socket.on('chat message',function(data) {
+    //   console.log('Received a message from the server!',data);
+    // });
+    // // Add a disconnect listener
+    // socket.on('disconnect',function() {
+    //   console.log('The client has disconnected!');
+    // });
+    //
+    // // Sends a message to the server via sockets
+    // function sendMessageToServer(message) {
+    //   socket.send(message);
+    // };
+  </script>
+  <!-- <div class="jumbotron" id="mainbody"> -->
+    <div class="container-fluid" id="header">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="pull-right">
+            <span class="glyphicon glyphicon-chevron-down" aria-hidden="true" style="font-size:20px;" id="minimize"></span>
+            <span class="glyphicon glyphicon-unchecked" aria-hidden="true" style="font-size:20px;padding-left:10px;" id="maximize"></span>
+            <span class="glyphicon glyphicon-off" aria-hidden="true" style="font-size:20px;padding-left:10px;" id="close"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <p>Hello There!</p>
+    </div>
+  <!-- </div> -->
+</body>
+</html>

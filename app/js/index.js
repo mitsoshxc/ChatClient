@@ -29,3 +29,10 @@ maximizeWindow.addEventListener('click', function()
     maximizeWindow.style.fontSize = "15px";
   }
 });
+
+document.getElementById("user-log-in").addEventListener('click', function()
+{
+  connect();
+  document.getElementById("log-in-block").style.display = 'none';
+  document.getElementById("main-block").style.display = 'block';
+});

@@ -1,4 +1,20 @@
-var socket = io.connect('http://localhost:3000');
+var socket = null;
+
+function connect()
+{
+  socket = io.connect('http://localhost:1969');
+  socket.emit('join', {user: document.getElementById("user-name").value});
+  //socket.send(document.getElementById("user-name").value);
+};
+
+socket.on('new-user', function(data){
+  alert('Called');
+  for(var i = 0; i < data.length; i++)
+  {
+    alert('Called');
+    $('#users').append($('<div class="col-sm-2">').text(data[i]));
+  }
+});
 
 // Add a connect listener
 // socket.on('connection',function() {

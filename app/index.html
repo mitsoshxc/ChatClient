@@ -5,43 +5,72 @@
     <title>chat client</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/index.css">
-    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous">
+    </script>
+    <script
+      src="http://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous">
+    </script>
+    <script src="http://localhost:1969/socket.io/socket.io.js"></script>
     <script type="text/javascript" src="./js/index.js" async></script>
     <script type="text/javascript" src="./js/socket.js" async></script>
 </head>
 <body>
-  <!-- <div class="jumbotron" id="mainbody"> -->
-    <div class="container-fluid" id="header">
+  <div class="container-fluid" id="header">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="pull-right">
+          <span class="glyphicon glyphicon-chevron-down" aria-hidden="true" style="font-size:20px;" id="minimize"></span>
+          <span class="glyphicon glyphicon-unchecked" aria-hidden="true" style="font-size:20px;padding-left:10px;" id="maximize"></span>
+          <span class="glyphicon glyphicon-off" aria-hidden="true" style="font-size:20px;padding-left:10px;" id="close"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" id="log-in-block" style="margin-top:15%;">
+    <div class="row" style="padding-bottom:2%;">
+      <div class="col-sm-4 col-sm-offset-5">
+        <span style="font-size:20px;">User Name</span>
+      </div>
+    </div>
+    <div class="row" style="padding-bottom:2%;">
+      <div class="col-sm-6 col-sm-offset-3">
+        <input class="form-control" id="user-name">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+        <a class="btn btn-default btn-block" id="user-log-in">Connect</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid" style="display:none;" id="main-block">
+    <div id="connected-users">
       <div class="row">
         <div class="col-sm-12">
-          <div class="pull-right">
-            <span class="glyphicon glyphicon-chevron-down" aria-hidden="true" style="font-size:20px;" id="minimize"></span>
-            <span class="glyphicon glyphicon-unchecked" aria-hidden="true" style="font-size:20px;padding-left:10px;" id="maximize"></span>
-            <span class="glyphicon glyphicon-off" aria-hidden="true" style="font-size:20px;padding-left:10px;" id="close"></span>
-          </div>
+          <p>Currently connected users</p>
         </div>
       </div>
+      <div id="users"></div>
+    </div>
+    <div class="well well-sm pre-scrollable" id="message-log">
+      <ul id="messages"></ul>
     </div>
 
-    <div class="container">
-      <div class="col-sm-6 col-sm-offset-3">
-        <div class="row">
-          <p>
-            User Name
-          </p>
-        </div>
-        <div class="row">
-          <input class="form-control" id="oUser" placeholder="ex: manager">
-        </div>
-        <div class="row">
-          <a class="btn btn-default" id="oLogIn">Connect</a>
-        </div>
+    <div class="row" id="message-menu">
+      <div class="col-sm-10">
+        <input class="form-control" id="message-text">
+      </div>
+      <div class="col-sm-2">
+        <a class="btn btn-default btn-block" id="message-send">Send</a>
       </div>
     </div>
+  </div>
 
-    <div class="container-fluid">
-      <p>Hello There!</p>
-    </div>
-  <!-- </div> -->
 </body>
 </html>

@@ -2,6 +2,9 @@
 #header
 {
     -webkit-app-region: drag;
+    background-color: white;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 body
@@ -14,9 +17,12 @@ body
   -webkit-app-region: no-drag;
 }
 
-#header
+#main-block
+{
+  margin-top: 5px;
+}
+
+#message-log, #connected-users
 {
   background-color: white;
-  padding-top: 5px;
-  padding-bottom: 5px;
 }

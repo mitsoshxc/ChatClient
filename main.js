@@ -34,7 +34,3 @@ ipc.on('maximize-main-window', function()
 {
   mainWindow.maximize();
 });
-
-// mainWindow.on('enter-full-screen', function() {
-//     console.log('entered full screen');
-// });

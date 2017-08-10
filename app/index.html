@@ -50,13 +50,19 @@
   </div>
 
   <div class="container-fluid" style="display:none;" id="main-block">
-    <div id="connected-users">
+    <div class="container" id="connected-users">
+      <div class="row">
+        <div class="col-sm-3" id="active-user">
+        </div>
+      </div>
       <div class="row">
         <div class="col-sm-12">
           <p>Currently connected users</p>
         </div>
       </div>
-      <div id="users"></div>
+      <div class="row">
+        <div id="users"></div>
+      </div>
     </div>
     <div class="well well-sm pre-scrollable" id="message-log">
       <ul id="messages"></ul>

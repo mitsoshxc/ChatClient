@@ -1,25 +1,26 @@
 var socket = null;
+var iDiv = null;
+var dDiv = null;
+var aUser = null;
 
 function connect() {
   socket = io.connect('http://localhost:1969');
-  socket.emit('join', {user: document.getElementById("user-name").value});
-  // alert('Connected');
-  //socket.send(document.getElementById("user-name").value);
+  aUser = document.getElementById("user-name").value;
+  socket.emit('join', {
+    user: document.getElementById("user-name").value
+  });
 
   socket.on('new-user', function(data) {
-    alert('Adding div');
-    var iDiv=document.createElement("div");
-    iDiv.id = 'user1';
-    iDiv.className = 'col-sm-2';
-    document.getElementById('users').appendChild(iDiv);
+    dDiv = document.getElementById('users');
+    while ( dDiv.firstChild ) dDiv.removeChild( dDiv.firstChild );
 
-    iDiv.innerHTML = '<p>Hello!</p>'
-    // for (var i = 0; i < data.length; i++) {
-    //   // var dte = data[i];
-    //   // for (var j = 0; j < dte.length; j++) {
-    //
-    //   // }
-    // }
+    data.forEach(function(element){
+      iDiv = document.createElement("div");
+      iDiv.id = 'user';
+      iDiv.className = 'col-sm-2';
+      document.getElementById('users').appendChild(iDiv);
+      iDiv.innerHTML = '<p style="color:black;">' + element.name + '</p>'
+    });
   });
 };
 

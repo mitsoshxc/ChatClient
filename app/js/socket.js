@@ -28,11 +28,11 @@ function connect() {
     li = document.createElement("li");
 
     if (data.user == aUser) {
-      li.className = 'list-group-item text-right col-sm-10';
+      li.className = 'list-group-item text-right col-sm-12';
       li.innerHTML = data.message;
     }
     else {
-      li.className = 'list-group-item col-sm-8';
+      li.className = 'list-group-item col-sm-12';
       li.innerHTML = '<p>' + data.user + ',</p><p style="padding-left:10px;overflow:auto;">' + data.message + '</p>';
     }
 

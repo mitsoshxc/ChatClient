@@ -2,6 +2,7 @@ var socket = null;
 var iDiv = null;
 var dDiv = null;
 var aUser = null;
+var li = null;
 
 function connect() {
   socket = io.connect('http://localhost:1969');
@@ -22,9 +23,26 @@ function connect() {
       iDiv.innerHTML = '<p style="color:black;">' + element.name + '</p>'
     });
   });
+
+  socket.on('new-message', function(data){
+    li = document.createElement("li");
+
+    if (data.user == aUser) {
+      li.className = 'list-group-item text-right col-sm-10';
+      li.innerHTML = data.message;
+    }
+    else {
+      li.className = 'list-group-item col-sm-8';
+      li.innerHTML = '<p>' + data.user + ',</p><p style="padding-left:10px;overflow:auto;">' + data.message + '</p>';
+    }
+
+    document.getElementById('messages').appendChild(li);
+  });
 };
 
-// Sends a message to the server via sockets
-function sendMessageToServer(message) {
-  socket.send(message);
+function sendMessage(message)
+{
+  document.getElementById("message-text").value = '';
+  // $('#messages').append($('<li class="list-group-item text-right">').text(message));
+  socket.emit('chat-message', message);
 };

@@ -35,5 +35,11 @@ document.getElementById("user-log-in").addEventListener('click', function()
   connect();
   document.getElementById("log-in-block").style.display = 'none';
   document.getElementById("main-block").style.display = 'block';
+  document.body.style.background = "#47494c";
   document.getElementById("active-user").innerHTML = '<p>Hello ' + aUser + ',</p>';
+});
+
+document.getElementById("message-send").addEventListener('click', function(){
+  //alert();
+  sendMessage(document.getElementById("message-text").value);
 });

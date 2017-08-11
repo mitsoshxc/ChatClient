@@ -19,10 +19,36 @@ body
 
 #main-block
 {
+  display: none;
   margin-top: 5px;
+  margin-left: 1vh;
+  margin-right: 1vh;
 }
 
-#message-log, #connected-users
+#active-user
+{
+  color: white;
+}
+
+#connected-users
 {
   background-color: white;
+  max-height: 10vh;
+  border-radius: 5px;
+  overflow: auto;
+}
+
+#message-log
+{
+  margin-top: 3vh;
+}
+
+#messages
+{
+  list-style-type: none;
+  background-color: #9c9fa3;
+  max-height: 55vh;
+  min-height: 55vh;
+  border-radius: 5px;
+  overflow: auto;
 }

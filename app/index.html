@@ -13,6 +13,7 @@
   <script src="http://localhost:1969/socket.io/socket.io.js"></script>
   <script type="text/javascript" src="./js/index.js" async></script>
   <script type="text/javascript" src="./js/socket.js" async></script>
+  <script type="text/javascript" src="./js/functions.js" async></script>
 </head>
 
 <body>
@@ -72,9 +73,11 @@
     <div class="container-fluid" id="messaging">
       <div class="row">
         <div class="col-sm-2">
-          <ul class="list-group" id="groups">
-
-          </ul>
+          <div class="list-group" id="groups">
+            <a href="#" class="list-group-item active group" onclick="activate(this)">First Group</a>
+            <a href="#" class="list-group-item group" onclick="activate(this)">Second Group</a>
+            <a href="#" class="list-group-item group" onclick="activate(this)">Third Group</a>
+          </div>
         </div>
 
         <div class="col-sm-10">
@@ -84,10 +87,10 @@
             <li class="list-group-item">Test</li>             -->
           </ul>
         </div>
-      <!-- </div> -->
+        <!-- </div> -->
 
-      <!-- <div class="container-fluid"> -->
-      <!-- <div class="row"> -->
+        <!-- <div class="container-fluid"> -->
+        <!-- <div class="row"> -->
         <div class="col-sm-8">
           <textarea class="form-control" rows="3" style="resize: none;" id="message-text"></textarea>
         </div>

@@ -35,12 +35,15 @@ maximizeWindow.addEventListener('click', function()
 
 document.getElementById("user-log-in").addEventListener('click', function()
 {
-  connect();
-  document.getElementById("log-in-block").style.display = 'none';
-  document.getElementById("main-block").style.display = 'block';
-  document.body.style.background = "#47494c";
-  document.getElementById("active-user").innerHTML = '<p>Hello ' + aUser + ',</p>';
-  messageArea.focus();
+  if (/\S/.test(document.getElementById("user-name").value)) {
+    connect();
+    document.getElementById("log-in-block").style.display = 'none';
+    document.getElementById("main-block").style.display = 'block';
+    document.body.style.background = "#47494c";
+    currentWindow.maximize();
+    document.getElementById("active-user").innerHTML = '<p>Hello ' + aUser + ',</p>';
+    messageArea.focus();
+  }
 });
 
 document.getElementById("message-send").addEventListener('click', function(){

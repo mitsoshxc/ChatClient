@@ -44,7 +44,7 @@ function connect() {
     li = document.createElement("li");
     li.style = 'background-color:#9c9fa3;border:none;';
     li.className = 'list-group-item col-sm-12';
-    li.innerHTML = '<p style="background-color:#FF0000;color:#FFFFFF;border-radius:5px;">' + user + '  disconnected</p>';
+    li.innerHTML = '<p style="background-color:#FF0000;color:#FFFFFF;border-radius:5px;"> ' + user + '  disconnected</p>';
     document.getElementById('messages').appendChild(li);
   });
 };
@@ -54,4 +54,9 @@ function sendMessage(message)
   document.getElementById("message-text").value = '';
   // $('#messages').append($('<li class="list-group-item text-right">').text(message));
   socket.emit('chat-message', message);
+};
+
+function groupChange(group)
+{
+  socket.emit('group-change', group);
 };

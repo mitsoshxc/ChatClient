@@ -5,7 +5,10 @@ var currentWindow = electron.remote.getCurrentWindow();
 var closeEl = document.getElementById("close");
 var minimizeWindow = document.getElementById("minimize");
 var maximizeWindow = document.getElementById("maximize");
+var userLogIn = document.getElementById("user-name");
+var messageArea = document.getElementById("message-text");
 
+userLogIn.focus();
 
 closeEl.addEventListener('click', function () {
     ipc.send('close-main-window');
@@ -37,9 +40,24 @@ document.getElementById("user-log-in").addEventListener('click', function()
   document.getElementById("main-block").style.display = 'block';
   document.body.style.background = "#47494c";
   document.getElementById("active-user").innerHTML = '<p>Hello ' + aUser + ',</p>';
+  messageArea.focus();
 });
 
 document.getElementById("message-send").addEventListener('click', function(){
   //alert();
   sendMessage(document.getElementById("message-text").value);
+});
+
+messageArea.addEventListener('keypress', function(ev){
+  if (ev.keyCode == 13 && !ev.shiftKey) {
+    ev.preventDefault();
+    document.getElementById("message-send").click();
+  }
+});
+
+userLogIn.addEventListener('keypress', function(ev){
+  if (ev.keyCode == 13) {
+    ev.preventDefault();
+    document.getElementById("user-log-in").click();
+  }
 });

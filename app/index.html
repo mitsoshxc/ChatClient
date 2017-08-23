@@ -18,7 +18,10 @@
 <body>
   <div class="container-fluid" id="header">
     <div class="row">
-      <div class="col-sm-12">
+      <div class="col-sm-2">
+        <span style="font-size:20px;">Chat Client</span>
+      </div>
+      <div class="col-sm-10">
         <div class="pull-right">
           <span class="glyphicon glyphicon-chevron-down" aria-hidden="true" style="font-size:20px;" id="minimize"></span>
           <span class="glyphicon glyphicon-unchecked" aria-hidden="true" style="font-size:20px;padding-left:10px;" id="maximize"></span>
@@ -46,9 +49,12 @@
     </div>
   </div>
 
-  <div class="container-fluid" id="main-block">
-    <div class="row">
-      <div class="col-sm-3" id="active-user">
+  <div class="clearfix" id="main-block">
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3" id="active-user">
+        </div>
       </div>
     </div>
 
@@ -63,18 +69,26 @@
       </div>
     </div>
 
-    <div class="container-fluid" id="message-log">
+    <div class="container-fluid" id="messaging">
       <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-2">
+          <ul class="list-group" id="groups">
+
+          </ul>
+        </div>
+
+        <div class="col-sm-10">
           <ul class="list-group" id="messages">
             <!-- <li class="list-group-item">Test</li>
             <li class="list-group-item text-right">Test</li>
             <li class="list-group-item">Test</li>             -->
           </ul>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-10">
+      <!-- </div> -->
+
+      <!-- <div class="container-fluid"> -->
+      <!-- <div class="row"> -->
+        <div class="col-sm-8">
           <textarea class="form-control" rows="3" style="resize: none;" id="message-text"></textarea>
         </div>
         <div class="col-sm-2">
@@ -84,6 +98,9 @@
     </div>
 
   </div>
+  <!-- #main-block -->
+
+
 </body>
 
 </html>

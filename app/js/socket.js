@@ -33,9 +33,18 @@ function connect() {
     }
     else {
       li.className = 'list-group-item col-sm-12';
-      li.innerHTML = '<p>' + data.user + ',</p><p style="padding-left:10px;overflow:auto;">' + data.message + '</p>';
+      li.innerHTML = '<p style="color:#26DE1A;">' + data.user + ',</p>' +
+                     '<p style="padding-left:10px;overflow:auto;">' + data.message + '</p>';
     }
 
+    document.getElementById('messages').appendChild(li);
+  });
+
+  socket.on('user-left', function(user){
+    li = document.createElement("li");
+    li.style = 'background-color:#9c9fa3;border:none;';
+    li.className = 'list-group-item col-sm-12';
+    li.innerHTML = '<p style="background-color:#FF0000;color:#FFFFFF;border-radius:5px;">' + user + '  disconnected</p>';
     document.getElementById('messages').appendChild(li);
   });
 };

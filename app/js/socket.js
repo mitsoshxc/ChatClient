@@ -1,32 +1,31 @@
 var socket = null;
-var iDiv = null;
-var dDiv = null;
 var aUser = null;
-var li = null;
 
 function connect() {
   socket = io.connect('http://localhost:1969');
   aUser = document.getElementById("user-name").value;
+
   socket.emit('join', {
     user: document.getElementById("user-name").value
   });
 
   socket.on('new-user', function(data) {
-    dDiv = document.getElementById('users');
-    while (dDiv.firstChild) dDiv.removeChild(dDiv.firstChild);
+    refreshUsers(data);
 
-    data.forEach(function(element) {
-      iDiv = document.createElement("div");
-      iDiv.id = 'user';
-      iDiv.className = 'col-sm-2';
-      document.getElementById('users').appendChild(iDiv);
-      iDiv.innerHTML = '<p style="color:black;">' + element.name + '</p>'
-    });
+    if (data[data.length - 1].name !== aUser) {
+      var li = document.createElement("li");
+      li.style = 'background-color:#26DE1A;border:none;';
+      li.className = 'list-group-item col-sm-12';
+      li.innerHTML = '<p style="background-color:#26DE1A;border-radius:5px;">' + data[data.length - 1].name +
+        '  connected!</p>';
+      document.getElementById('messages').appendChild(li);
+
+      scrollDown();
+    }
   });
 
   socket.on('new-message', function(data) {
-    li = document.createElement("li");
-
+    var li = document.createElement("li");
     // if (data.user == aUser) {
     //   li.className = 'list-group-item text-right col-sm-12';
     //   li.innerHTML = data.message;
@@ -38,36 +37,87 @@ function connect() {
     // }
 
     document.getElementById('messages').appendChild(li);
+
+    scrollDown();
   });
 
   socket.on('user-left', function(user) {
-    li = document.createElement("li");
-    li.style = 'background-color:#9c9fa3;border:none;';
+    var li = document.createElement("li");
+    li.style = 'background-color:#FF0000;border:none;';
     li.className = 'list-group-item col-sm-12';
-    li.innerHTML = '<p style="background-color:#FF0000;color:#FFFFFF;border-radius:5px;">  ' + user + '  disconnected.</p>';
+    li.innerHTML = '<p style="background-color:#FF0000;color:#000000;border-radius:5px;">  ' + user +
+      '  disconnected.</p>';
     document.getElementById('messages').appendChild(li);
+
+    scrollDown();
   });
-};
+
+  socket.on('user-left-group', function(user) {
+    var li = document.createElement("li");
+    li.style = 'background-color:#FF5602;border:none;';
+    li.className = 'list-group-item col-sm-12';
+    li.innerHTML = '<p style="background-color:#FF5602;color:#000000;border-radius:5px;">  ' + user +
+      '  left the room.</p>';
+    document.getElementById('messages').appendChild(li);
+
+    scrollDown();
+  });
+
+  socket.on('user-join-group', function(user) {
+    var li = document.createElement("li");
+    li.style = 'background-color:#26DE1A;border:none;';
+    li.className = 'list-group-item col-sm-12';
+    li.innerHTML = '<p style="background-color:#26DE1A;color:#000000;border-radius:5px;">  ' + user +
+      '  joined the room.</p>';
+    document.getElementById('messages').appendChild(li);
+
+    scrollDown();
+  });
+
+  socket.on('refresh-users', function(users) {
+    refreshUsers(users);
+  });
+
+  socket.on('send-whisper', function(data) {
+    var li = document.createElement("li");
+    li.className = 'list-group-item col-sm-12';
+    li.innerHTML = '<p style="color:#E402FF;">Whisper from  ' + data.user + ',</p>' +
+      '<p style="padding-left:10px;overflow:auto;color:#E402FF">' + data.message + '</p>';
+    document.getElementById('messages').appendChild(li);
+
+    scrollDown();
+  });
+}; //connect()
 
 function sendMessage(message) {
   document.getElementById("message-text").value = '';
   socket.emit('chat-message', message);
-
-  li = document.createElement("li");
+  var li = document.createElement("li");
   li.className = 'list-group-item text-right col-sm-12';
-  li.innerHTML = message;
+  var spltres = message.split(' ');
+  if (spltres[0] == '\\w') {
+    var messageToView = spltres[2];
+    for (var i = 3; i < spltres.length; i++) {
+      messageToView += ' ' + spltres[i];
+    }
+    li.innerHTML = '<p style="color:#E402FF;">Whisper to ' + spltres[1].slice(0, -1) + ' ,</p>' +
+      '<p style="overflow:auto;color:#E402FF;">' + messageToView + '</p>'
+  } else {
+    li.innerHTML = message;
+  }
   document.getElementById('messages').appendChild(li);
 
-  var scrdwn = document.getElementById("messages");
-  scrdwn.scrollTop = scrdwn.scrollHeight;
+  scrollDown();
 };
 
 function groupChange(group) {
   socket.emit('group-change', group);
-  li = document.createElement("li");
-  li.style = 'background-color:#9c9fa3;border:none;';
+  var li = document.createElement("li");
+  li.style = 'background-color:#00FFEC;border:none;';
   li.className = 'list-group-item col-sm-12';
   li.innerHTML = '<p style="background-color:#00FFEC;color:#000000;border-radius:5px;">  Moved to ' +
     group + '  room.</p>';
   document.getElementById('messages').appendChild(li);
+
+  scrollDown();
 };

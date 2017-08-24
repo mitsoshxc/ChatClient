@@ -45,7 +45,7 @@ body
   max-height: 75vh;
   min-height: 75vh;
   border-radius: 5px;
-  overflow: auto;
+  overflow: scroll;
 }
 
 #messaging
@@ -60,5 +60,5 @@ body
   max-height: 62vh;
   min-height: 62vh;
   border-radius: 5px;
-  overflow: auto;
+  overflow: scroll;
 }

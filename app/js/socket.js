@@ -81,7 +81,8 @@ function connect() {
   socket.on('send-whisper', function(data) {
     var li = document.createElement("li");
     li.className = 'list-group-item col-sm-12';
-    li.innerHTML = '<p style="color:#E402FF;">Whisper from  ' + data.user + ',</p>' +
+    li.innerHTML = '<p style="color:#E402FF;">Whisper from  <a href="#"' +
+      ' style="text-decoration:none; color:#E402FF" onclick="sendWhisper(this)">' + data.user + '</a> ,</p>' +
       '<p style="padding-left:10px;overflow:auto;color:#E402FF">' + data.message + '</p>';
     document.getElementById('messages').appendChild(li);
 
@@ -100,7 +101,9 @@ function sendMessage(message) {
     for (var i = 3; i < spltres.length; i++) {
       messageToView += ' ' + spltres[i];
     }
-    li.innerHTML = '<p style="color:#E402FF;">Whisper to ' + spltres[1].slice(0, -1) + ' ,</p>' +
+    li.innerHTML = '<p style="color:#E402FF;">Whisper to <a href="#"' +
+      ' style="text-decoration:none; color:#E402FF" onclick="sendWhisper(this)">' +
+      spltres[1].slice(0, -1) + '</a> ,</p>' +
       '<p style="overflow:auto;color:#E402FF;">' + messageToView + '</p>'
   } else {
     li.innerHTML = message;

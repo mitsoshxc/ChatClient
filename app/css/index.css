@@ -1,37 +1,30 @@
-/*html, body*/
-#header
-{
-    -webkit-app-region: drag;
-    background-color: white;
-    padding-top: 5px;
-    padding-bottom: 5px;
+#header {
+  -webkit-app-region: drag;
+  background-color: white;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
-body
-{
+body {
   background-color: #00FFFF;
 }
 
-#close, #minimize, #maximize
-{
+#close, #minimize, #maximize {
   -webkit-app-region: no-drag;
 }
 
-#main-block
-{
+#main-block {
   display: none;
   margin-top: 5px;
   /*margin-left: 1vh;
   margin-right: 1vh;*/
 }
 
-#active-user
-{
+#active-user {
   color: white;
 }
 
-#connected-users
-{
+#connected-users {
   background-color: white;
   max-height: 15vh;
   border-radius: 5px;
@@ -39,26 +32,23 @@ body
   width: 95%;
 }
 
-#groups
-{
+#groups {
   background-color: white;
-  max-height: 75vh;
-  min-height: 75vh;
+  max-height: 80vh;
+  min-height: 80vh;
   border-radius: 5px;
   overflow: scroll;
 }
 
-#messaging
-{
+#messaging {
   margin-top: 3vh;
 }
 
-#messages
-{
+#messages {
   list-style-type: none;
   background-color: #9c9fa3;
-  max-height: 62vh;
-  min-height: 62vh;
+  max-height: 71vh;
+  min-height: 71vh;
   border-radius: 5px;
   overflow: scroll;
 }

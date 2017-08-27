@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>chat client</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/index.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
+  </script>
+  <script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous">
+  </script>
+  <script src="http://192.168.1.4:1969/socket.io/socket.io.js"></script>
+  <script type="text/javascript" src="./js/index.js" async></script>
+  <script type="text/javascript" src="./js/socket.js" async></script>
+  <script type="text/javascript" src="./js/functions.js" async></script>
+</head>
+
+<body>
+  <div class="container-fluid" id="header">
+    <div class="row">
+      <div class="col-sm-2">
+        <span style="font-size:20px;">Chat Client</span>
+      </div>
+      <div class="col-sm-10">
+        <div class="pull-right">
+          <span class="glyphicon glyphicon-chevron-down" aria-hidden="true" style="font-size:20px;" id="minimize"></span>
+          <span class="glyphicon glyphicon-unchecked" aria-hidden="true" style="font-size:20px;padding-left:10px;" id="maximize"></span>
+          <span class="glyphicon glyphicon-off" aria-hidden="true" style="font-size:20px;padding-left:10px;" id="close"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" id="log-in-block" style="margin-top:15%;">
+    <div class="row" style="padding-bottom:2%;">
+      <div class="col-sm-4 col-sm-offset-5">
+        <span style="font-size:20px;">User Name</span>
+      </div>
+    </div>
+    <div class="row" style="padding-bottom:2%;">
+      <div class="col-sm-6 col-sm-offset-3">
+        <input class="form-control" id="user-name">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+        <a class="btn btn-default btn-block" id="user-log-in">Connect</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="clearfix" id="main-block">
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3" id="active-user">
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid" id="connected-users">
+      <div class="row">
+        <div class="col-sm-12">
+          <p>Currently connected users</p>
+        </div>
+      </div>
+      <div class="row">
+        <div id="users"></div>
+      </div>
+    </div>
+
+    <div class="container-fluid" id="messaging">
+      <div class="row">
+        <div class="col-sm-2">
+          <div class="list-group" id="groups">
+            <a href="#" class="list-group-item active group" onclick="activate(this)">First Group</a>
+            <a href="#" class="list-group-item group" onclick="activate(this)">Second Group</a>
+            <a href="#" class="list-group-item group" onclick="activate(this)">Third Group</a>
+          </div>
+        </div>
+
+        <div class="col-sm-10">
+          <ul class="list-group" id="messages">
+            <!-- <li class="list-group-item">Test</li>
+            <li class="list-group-item text-right">Test</li>
+            <li class="list-group-item">Test</li>             -->
+          </ul>
+        </div>
+        <!-- </div> -->
+
+        <!-- <div class="container-fluid"> -->
+        <!-- <div class="row"> -->
+        <div class="col-sm-8">
+          <textarea class="form-control" rows="3" style="resize: none;" id="message-text"></textarea>
+        </div>
+        <div class="col-sm-2">
+          <a class="btn btn-default btn-block" id="message-send">Send</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- #main-block -->
+
+
+</body>
+
+</html>

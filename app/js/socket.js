@@ -2,7 +2,7 @@ var socket = null;
 var aUser = null;
 
 function connect() {
-  socket = io.connect('http://localhost:1969');
+  socket = io.connect('http://technoserver.ddnsking.com:1969');
   aUser = document.getElementById("user-name").value;
 
   socket.emit('join', {

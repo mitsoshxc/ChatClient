@@ -81,8 +81,11 @@ function connect() {
 
       scrollDown();
     });
+
+    return true;
   } catch (e) {
     alert(e.message);
+    return false;
   }
 }; //connect()
 

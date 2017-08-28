@@ -3,7 +3,8 @@ var aUser = null;
 
 function connect() {
   try {
-    socket = io.connect('http://technoserver.ddnsking.com:1969');
+    socket = io.connect('http://localhost:1969');
+    // socket = io.connect('http://technoserver.ddnsking.com:1969');
     aUser = document.getElementById("user-name").value;
 
     socket.emit('join', {user: document.getElementById("user-name").value});
@@ -30,7 +31,7 @@ function connect() {
       // }
       // else {
       li.className = 'list-group-item col-sm-12';
-      li.innerHTML = '<p style="color:#26DE1A;">' + data.user + ',</p>' + '<p style="padding-left:10px;overflow:auto;">' + data.message + '</p>';
+      li.innerHTML = '<p style="color:#26DE1A;"><a href="#" style="text-decoration:none;color:#26DE1A;" onclick="sendWhisper(this)">' + data.user + '</a>,</p>' + '<p style="padding-left:10px;overflow:auto;">' + data.message + '</p>';
       // }
 
       document.getElementById('messages').appendChild(li);
@@ -76,7 +77,7 @@ function connect() {
       var li = document.createElement("li");
       li.className = 'list-group-item col-sm-12';
       li.innerHTML = '<p style="color:#E402FF;">Whisper from  <a href="#"' +
-        ' style="text-decoration:none; color:#E402FF" onclick="sendWhisper(this)">' + data.user + '</a> ,</p>' + '<p style="padding-left:10px;overflow:auto;color:#E402FF">' + data.message + '</p>';
+        ' style="text-decoration:none; color:#E402FF" onclick="sendWhisper(this)">' + data.user + '</a>,</p>' + '<p style="padding-left:10px;overflow:auto;color:#E402FF">' + data.message + '</p>';
       document.getElementById('messages').appendChild(li);
 
       scrollDown();
